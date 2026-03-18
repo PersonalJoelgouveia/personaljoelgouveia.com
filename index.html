@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joel Gouveia | Personal Trainer | Performance, Emagrecimento & Força</title>
+    <link rel="icon" type="image/png" href="file:///C:/Users/joelg/Music/PersonalJoelGouveia/Site/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root {
+            --cor-slogan: #2E948B; 
+            --cor-nome: #FFFFFF;
+            --fundo-deep: #0d0d0d; 
+            --fundo-card: rgba(26, 26, 26, 0.9);
+            --borda-raio: 20px;
+            --transicao-elastic: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --header-height: 80px;
+        }
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; color: var(--cor-nome); }
+
+        body {
+            background-color: var(--fundo-deep);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), 
+                              url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: var(--header-height);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+            background: rgba(13, 13, 13, 0.95); backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 40px; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .nav-left, .nav-right { flex: 1; display: flex; align-items: center; }
+        .nav-right { justify-content: flex-end; }
+        .nav-menu { flex: 3; display: flex; justify-content: center; gap: 25px; }
+        .logo-nav { height: 45px; width: auto; }
+        .nav-link { text-decoration: none; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; transition: color 0.3s ease; white-space: nowrap; }
+        .nav-link:hover { color: var(--cor-slogan); }
+        .btn-fale-conosco { background: var(--cor-slogan); color: #000; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 900; font-size: 0.7rem; text-transform: uppercase; transition: var(--transicao-elastic); }
+
+        /* --- SEÇÕES --- */
+        section { scroll-margin-top: calc(var(--header-height) + 20px); width: 100%; max-width: 800px; padding: 40px 20px; }
+        .secao-titulo { font-size: 0.85rem; color: var(--cor-slogan); margin: 30px 0 25px; text-transform: uppercase; letter-spacing: 4px; text-align: center; font-weight: 700; }
+
+        /* --- BALÕES DE SOLUÇÕES (POSIÇÃO CORRIGIDA) --- */
+        .chat-container { display: flex; flex-direction: column; gap: 40px; margin-bottom: 60px; overflow: hidden; }
+        .balao { max-width: 85%; padding: 20px; border-radius: 20px; line-height: 1.5; position: relative; font-size: 0.9rem; }
+        
+        .balao-problema {
+            align-self: flex-start; /* Problema na esquerda */
+            background: #2a2a2a;
+            color: #ddd;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        .balao-problema strong { color: #ff6b6b; display: block; margin-bottom: 5px; font-size: 0.75rem; text-transform: uppercase; }
+
+        .balao-resposta {
+            align-self: flex-end; /* Resposta na direita */
+            background: var(--cor-slogan);
+            color: #000;
+            border-bottom-right-radius: 2px;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(46, 148, 139, 0.2);
+        }
+        .balao-resposta strong { color: #000; display: block; margin-bottom: 5px; font-size: 0.75rem; text-transform: uppercase; font-weight: 900; }
+
+        /* --- BOTÕES E CARDS --- */
+        .btn-link { display: flex; align-items: center; justify-content: center; background: var(--cor-slogan); color: #000; text-decoration: none; padding: 18px; border-radius: var(--borda-raio); margin-bottom: 15px; font-weight: 900; text-transform: uppercase; transition: var(--transicao-elastic); width: 100%; text-align: center; }
+        .btn-outline { background: transparent !important; color: #fff !important; border: 2px solid rgba(255,255,255,0.2) !important; }
+        .card { background: var(--fundo-card); border-radius: var(--borda-raio); padding: 25px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+
+        /* --- CARROSSEL --- */
+        .carousel-wrapper { width: 100%; overflow: hidden; position: relative; }
+        .carousel-track { display: flex; transition: transform 0.6s ease-in-out; }
+        .testimonial-card { min-width: 100%; padding: 10px; }
+        .testimonial-content { background: rgba(20, 20, 20, 0.8); border-radius: var(--borda-raio); padding: 25px; border-left: 4px solid var(--cor-slogan); text-align: left; }
+        .testimonial-text { font-style: italic; font-size: 0.9rem; line-height: 1.5; color: #ddd; margin-bottom: 10px; }
+        .testimonial-author { font-weight: 700; font-size: 0.8rem; color: var(--cor-slogan); display: block; }
+        
+        footer { width: 100%; padding: 40px; text-align: center; color: #555; font-size: 0.7rem; background: rgba(0,0,0,0.5); }
+
+        @media (max-width: 950px) { .nav-menu { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="file:///C:/Users/joelg/Music/PersonalJoelGouveia/Site/logo.png" alt="Logo" class="logo-nav">
+        </div>
+        <div class="nav-menu">
+            <a href="#servicos" class="nav-link">Serviços</a>
+            <a href="#porque" class="nav-link">Por que treinar conosco</a>
+            <a href="#solucoes" class="nav-link">Soluções</a>
+            <a href="#resultados" class="nav-link">Resultados</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://wa.me/5511992073666" class="btn-fale-conosco">Fale Conosco</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="text-align: center; padding-top: 20px;">
+        <img src="file:///C:/Users/joelg/Music/PersonalJoelGouveia/Site/logo-300x145.png" alt="Joel Gouveia" style="max-width:200px">
+        <div class="secao-titulo" style="margin-top: 10px;">Performance, Emagrecimento & Reabilitação</div>
+    </header>
+
+    <div class="container" style="width: 100%; max-width: 600px; padding: 20px; margin: 0 auto;">
+        
+        <section id="servicos">
+            <h2 class="secao-titulo">Nossos Serviços</h2>
+            <a href="https://wa.me/5511992073666?text=Olá!+Aulas+Presenciais" class="btn-link" style="background: #fff; color: #000;">💪 Aulas Presenciais</a>
+            <a href="https://wa.me/5511992073666?text=Olá!+Consultoria+Online" class="btn-link" style="background: var(--cor-slogan); color: #000;">💻 Consultoria Online</a>
+            <a href="https://wa.me/5511992073666?text=Olá!+Avaliação+Física" class="btn-link" style="background: transparent; color: #fff; border: 2px solid #fff;">📊 Avaliação Física</a>
+            <a href="https://wa.me/5511992073666?text=Olá!+Liberação+Miofascial" class="btn-link" style="background: transparent; color: var(--cor-slogan); border: 2px solid var(--cor-slogan);">👐 Liberação Miofascial</a>
+        </section>
+
+        <section id="porque">
+            <h2 class="secao-titulo">Por que treinar conosco</h2>
+           <div class="card">
+    <p style="color: #bbb; line-height: 1.8; text-align: justify; font-size: 0.95rem; letter-spacing: 0.3px;">
+        Esqueça as fichas e treinos genéricos. Aqui, cada movimento é planejado meticulosamente para o seu <strong>corpo</strong>, suas <strong>individualidades</strong> e sua <strong>rotina</strong>. Oferecemos um acompanhamento de alta precisão para quem não tem tempo a perder e exige o máximo de segurança e eficiência em cada repetição.
+    </p>
+</div>
+        </section>
+
+        <section id="solucoes">
+            <h2 class="secao-titulo">Soluções Personalizadas</h2>
+            <div class="chat-container">
+                <div class="balao balao-problema reveal-left">
+                    <strong>O Dilema do Relógio</strong>
+                    "Minha rotina é um caos entre trabalho e família. Não tenho como me deslocar até uma academia e esperar aparelhos liberarem."
+                </div>
+                <div class="balao balao-resposta reveal-right">
+                    <strong>Nossa Solução</strong>
+                    Eu levo o treino até você. Seja na sala, condomínio ou parque. Treinos express de 20 a 30 min com alta eficiência para transformar sua saúde sem sair da rotina.
+                </div>
+
+                <div class="balao balao-problema reveal-left">
+                    <strong>A Barreira do Desânimo</strong>
+                    "Já me matriculei em academias e parei em um mês. Me sinto apenas mais um número lá dentro, ninguém me orienta de verdade."
+                </div>
+                <div class="balao balao-resposta reveal-right">
+                    <strong>Nossa Solução</strong>
+                    Foco 100% individualizado. Adapto o treino ao que você gosta. E se precisar de motivação extra, o Plano Duo permite treinar com um parceiro sob minha supervisão.
+                </div>
+            </div>
+        </section>
+
+        <section id="resultados">
+            <h2 class="secao-titulo">Resultados</h2>
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Minhas dores constantes no joelho sumiram e finalmente voltei a agachar com carga."</p>
+                            <span class="testimonial-author">Ricardo M. - Reabilitação</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"O foco em massa magra e a correção técnica online são impecáveis."</p>
+                            <span class="testimonial-author">Juliana S. - Performance</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Joel salvou meu treino de pernas. A consultoria online é muito detalhada."</p>
+                            <span class="testimonial-author">Marcos T. - Hipertrofia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato">
+            <h2 class="secao-titulo">Contato & Social</h2>
+            <a href="https://wa.me/5511992073666" class="btn-link" style="background: var(--cor-slogan); color: #000;">Agende um orçamento online</a>
+            <a href="https://instagram.com/personaljoelgouveia" class="btn-link btn-outline">Siga-nos no Instagram!</a>
+            <a id="btn-contato" class="btn-link btn-outline" style="border-color: var(--cor-slogan) !important; color: var(--cor-slogan) !important; cursor: pointer;">
+                💾 Salve nosso contato
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Joel Gouveia. Personal Trainer & Reabilitação Articular.
+    </footer>
+
+    <script>
+        // --- vCard ---
+        const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Joel Gouveia Personal\nTEL;TYPE=CELL:+5511992073666\nEND:VCARD`;
+        const blob = new Blob([vcard], { type: 'text/vcard' });
+        const urlVcard = window.URL.createObjectURL(blob);
+        const btnVcard = document.getElementById('btn-contato');
+        btnVcard.href = urlVcard;
+        btnVcard.download = 'Joel_Gouveia_Personal.vcf';
+
+        // --- ScrollReveal Ajustado (Só aparece no meio da tela) ---
+        ScrollReveal().reveal('.reveal-left', { 
+            origin: 'left', distance: '80px', duration: 1000, viewFactor: 0.5, easing: 'ease-in-out' 
+        });
+        ScrollReveal().reveal('.reveal-right', { 
+            origin: 'right', distance: '80px', duration: 1000, viewFactor: 0.5, delay: 300, easing: 'ease-in-out' 
+        });
+
+        // --- Carrossel de Resultados ---
+        const track = document.getElementById('carouselTrack');
+        let index = 0;
+        const slides = document.querySelectorAll('.testimonial-card');
+        if (slides.length > 0) {
+            setInterval(() => {
+                index = (index + 1) % slides.length;
+                track.style.transform = `translateX(-${index * 100}%)`;
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
